@@ -78,8 +78,16 @@ for i in wb.sheetnames:
         D = D * j
     D = D ** (1 / len(d_array))
 
-    print('По критеріям:', d_array)
-    print(f'Узагальнена оцінка для проекту {i}:', D)
+    # print('По критеріям:', d_array)
+    if D >= 0.9:
+        verbal_scale = 'Проект з високим пріоритетом'
+    elif D >= 0.75:
+        verbal_scale = 'Проект з середнім пріоритетом'
+    elif D >= 0.5:
+        verbal_scale = 'Проект з низьким пріоритетом'
+    else:
+        verbal_scale = 'Небажаний проект'
+    print(f'Узагальнена оцінка для проекту {i}:\n{verbal_scale} ({D})\n')
     D_array.append(D)
 
 
