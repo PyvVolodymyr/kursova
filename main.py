@@ -68,7 +68,7 @@ for i in wb.sheetnames:
         D = D * j
     D = D ** (1 / len(d_array))
 
-    # print('По критеріям:', d_array)
+    print('По критеріям:', d_array)
     print(f'Узагальнена оцінка для проекту {i}:', D)
     D_array.append(D)
 

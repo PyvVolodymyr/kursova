@@ -36,16 +36,29 @@ matplotlib.use('TkAgg')
 # plt.close()
 
 
+# def f_harrington_unilateral(x_low, x_up, x):
+#     z = (x - x_low) / (x_up - x_low)
+#     d = 1 / (1 + exp(-3 * z * z))
+#     return d
+#
+#
+# def f_harrington_bilateral(x_low, x_up, x):
+#     z = (x - x_up) / (x_low - x_up)
+#     d = exp(-3 * z * z)
+#     return d
+
+
 def f_harrington_unilateral(x_low, x_up, x):
-    z = (x - x_low) / (x_up - x_low)
-    d = 1 / (1 + exp(-3 * z * z))
+    y = (x - x_low) / (x_up - x_low)
+    d = exp(-exp(-y))
     return d
 
 
 def f_harrington_bilateral(x_low, x_up, x):
-    z = (x - x_up) / (x_low - x_up)
-    d = exp(-3 * z * z)
+    y = (2 * x - (x_up + x_low)) / (x_up - x_low)
+    d = exp(-abs(y))
     return d
+
 
 wb = load_workbook('projects.xlsx')
 D_array = []
@@ -78,7 +91,7 @@ for i in wb.sheetnames:
         D = D * j
     D = D ** (1 / len(d_array))
 
-    # print('По критеріям:', d_array)
+    print('По критеріям:', d_array)
     if D >= 0.9:
         verbal_scale = 'Проект з високим пріоритетом'
     elif D >= 0.75:
@@ -103,5 +116,5 @@ fig.set_facecolor('floralwhite')
 fig.set_figwidth(12)
 fig.set_figheight(6)
 
-plt.show()
+# plt.show()
 plt.close()
