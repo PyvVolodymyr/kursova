@@ -116,5 +116,5 @@ fig.set_facecolor('floralwhite')
 fig.set_figwidth(12)
 fig.set_figheight(6)
 
-# plt.show()
+plt.show()
 plt.close()
